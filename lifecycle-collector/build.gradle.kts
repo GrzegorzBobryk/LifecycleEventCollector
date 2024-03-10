@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -35,6 +36,15 @@ android {
     }
 }
 
+detekt {
+    debug = true
+    allRules = false
+    parallel = true
+    buildUponDefaultConfig = true
+    config.setFrom(files("$rootDir/config/detekt.yml"))
+    ignoredBuildTypes = listOf("release")
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -42,4 +52,7 @@ dependencies {
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
+
+    //lint
+    detektPlugins(libs.detekt.formatting)
 }
