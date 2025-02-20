@@ -1,4 +1,7 @@
+rootProject.name = "Lifecycle-Event-Collector"
+
 pluginManagement {
+    includeBuild("buildConfig")
     repositories {
         google {
             content {
@@ -22,7 +25,5 @@ dependencyResolutionManagement {
 }
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "Lifecycle-Event-Collector"
 include(":sample")
 include(":lifecycle-collector")
